@@ -6,11 +6,15 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 13:44:27 by marhuber          #+#    #+#             */
-/*   Updated: 2026/09/25 13:45:06 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/02 20:21:30 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main()
+#include "main.h"
+
+int	main(void)
 {
-	
+	t_ctx	ctx;
+
+	(void) ctx;
 }
