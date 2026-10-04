@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/03 14:35:09 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/03 14:51:23 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 * The most important functions will reference it
 * ...
 * @param spheres points at the start of a linked list of spheres
-* @param planes points at the start of a linked list of spheres
-* @param cylinders points at the start of a linked list of spheres
+* @param planes points at the start of a linked list of planes
+* @param cylinders points at the start of a linked list of cylinders
 * If no sphere, plane or cylinder is present, the pointer is NULL
 */
 typedef struct s_context

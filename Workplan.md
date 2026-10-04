@@ -17,7 +17,11 @@ The program has to go through the following steps during execution:
 	- identify the lightning in that point
 		- find the ray from the light to that point
 		- proof whether this ray meets other objects before
-	- compute the resulting color at that point
+	- compute the resulting color at that point 
+		- apply diffuse light
+			- compute the normal vector of the surface
+			- multiply with light direction
+		- apply ambient light
 
 - display the image
 	- set up a MiniLibX image
@@ -56,3 +60,14 @@ int	tracing(t_ctx *ctx, t_direction direction, t_color *result);
 
 
 # Ressources
+
+## Overview of ray tracing
+
+https://www.tutorialspoint.com/computer_graphics/computer_graphics_ray_tracing_algorithm.htm
+
+
+## On diffuse & ambient light
+
+https://cglearn.eu/pub/computer-graphics/shading-and-lighting 
+
+https://www.youtube.com/watch?v=xoLpDLeiAlU
