@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/09 10:42:15 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/09 10:57:10 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct s_context
 * @param point_a points at the starting point
 * @param point_b points at the destination point 
 * @param result points at a memory space where the resulting direction is saved
-* Returns 0 if successful, 1 if an error occurs
+* If both points are the same, the result is the zero vector & raises an error
+* Returns 0 if successful, 1 if both points are the same
 */
 int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
 
