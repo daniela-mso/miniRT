@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/03 14:51:23 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/09 10:42:15 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,22 @@ typedef struct s_context
 // Common functions
 
 /**
-* This function computes the direction of a ray between two points in space
-* @param first_point are the coordinates of the starting point
-* @param second_point are the coordinates of the destination point 
+* This function computes the direction of segment between two points in space
+* @param point_a points at the starting point
+* @param point_b points at the destination point 
 * @param result points at a memory space where the resulting direction is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int	direction(t_coord first_point, t_coord second_point, t_direction *result);
+int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
 
 /**
 * This function does the ray tracing
 * Assumes that the ray starts at the camera, whose coordinates are in ctx
 * @param ctx points at the context
-* @param direction is the direction of the ray to be traced 
+* @param direction points at the direction of the ray to be traced 
 * @param result points at a memory space where the resulting color is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int	tracing(t_ctx *ctx, t_direction direction, t_color *result);
+int	tracing(t_ctx *ctx, t_direction *direction, t_color *result);
 
 #endif // #ifndef MAIN_H

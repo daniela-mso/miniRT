@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:22:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/02 20:21:10 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/09 10:32:59 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ typedef struct s_vector	t_coord;
 typedef struct s_vector	t_direction;
 // Or one?
 typedef struct s_vector	t_vector;
+
+// Difference: A coordinate can be (0, 0, 0), which is the vector zero.
+// A vector zero as a coordinate represents the "center" or origin of the 
+// coordinates system.
+// A direction cannot be the vector zero.
+
 
 // Objects
 

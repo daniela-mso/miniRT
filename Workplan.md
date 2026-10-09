@@ -53,8 +53,8 @@ Function of special importance for the programm to work coherently:
 - A function that given a direction and the context does the ray tracing and returns the color. 
 
 ```C
-int direction(t_coord first_point, t_coord second_point, t_direction *result);
-int	tracing(t_ctx *ctx, t_direction direction, t_color *result);
+int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
+int	tracing(t_ctx *ctx, t_direction *direction, t_color *result);
 ```
 
 
