@@ -6,7 +6,7 @@
 #    By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/25 13:40:41 by marhuber          #+#    #+#              #
-#    Updated: 2026/09/25 13:52:39 by marhuber         ###   ########.fr        #
+#    Updated: 2026/10/09 19:04:50 by marhuber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ CFLAGS = -Wall -Wextra -Werror -g
 # Name of all sources files to be passed to the CC command
 MY_SOURCES = \
 	src/main.c \
+	src/geometry/direction.c \
+	src/utils/utils.c \
 	src/utils/lists1.c src/utils/lists2.c \
 	src/utils/get_next_line.c
 
