@@ -50,11 +50,11 @@ Function of special importance for the programm to work coherently:
 
 - A function that given two points in space computes the direction of a ray going from the first to the second.
 
-- A function that given a direction and the context does the ray tracing and returns the color. 
+- A function that given a direction and the context does the ray tracing and returns the color seen from the camera point when looking in that direction. 
 
 ```C
 int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
-int	tracing(t_ctx *ctx, t_direction *direction, t_color *result);
+int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result);
 ```
 
 

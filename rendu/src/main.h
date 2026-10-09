@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/09 10:57:10 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/10/09 21:55:48 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "objects.h"
 
 /**
-* This a structure make the information needed across the program available
+* This structure makes the information needed across the program available
 * There will be only one instance of it created in the main function
 * The most important functions will reference it
 * ...
@@ -47,13 +47,14 @@ typedef struct s_context
 int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
 
 /**
-* This function does the ray tracing
-* Assumes that the ray starts at the camera, whose coordinates are in ctx
+* This function delivers the color seen by the camera in the direction given
+* It assumes that the ray starts at the camera
+* It assumes that the context is properly populated
 * @param ctx points at the context
 * @param direction points at the direction of the ray to be traced 
 * @param result points at a memory space where the resulting color is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int	tracing(t_ctx *ctx, t_direction *direction, t_color *result);
+int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result);
 
 #endif // #ifndef MAIN_H
