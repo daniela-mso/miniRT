@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:22:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/09 21:34:31 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/01 10:22:11 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ typedef struct s_vector	t_vector;
 // coordinates system.
 // A direction cannot be the vector zero.
 
-// Objects
+// Surfaces
 
 typedef struct s_sphere
 {
 	t_coord	center;
-	float	diameter;
+	float	radius;
 	t_color	color;
 }			t_sp;
 
 typedef struct s_plane
 {
-	t_coord		center;
+	t_coord		point;
 	t_vector	normal;
 	t_color		color;
 }				t_pl;
@@ -61,17 +61,33 @@ typedef struct s_cylinder
 {
 	t_coord		center;
 	t_vector	direction;
-	float		diameter;
-	float		height;
+	float		radius;
+	float		half_height;
 	t_color		color;
 }				t_cy;
 
-// Question: Would it be possible to save the radius instead of the diameter?
-
-// Lists of objects
+typedef enum e_surface_type
+{
+	SP,
+	PL,
+	CY,
+}	t_surface_type;
 
 /**
-* This is an element of a linked list (
+* This is a generalized surface element
+* @param data points at an instance of t_sp, t_pl or t_cy
+* @param type indicates which one of those it is
+*/
+typedef struct s_surface_type
+{
+	void			*data;
+	t_surface_type	type;
+}	t_surface;
+
+// List of surfaces
+
+/**
+* This is an element of a linked list
 * @param content points at the content, eg. a string or another construct
 * @param next points at the next element in the list or is NULL, if none exists
 * the variable or element pointed at exists outside of this element
@@ -83,21 +99,9 @@ typedef struct s_list
 }					t_list;
 
 /**
-* This is an element within a list of spheres
-* @param content points at an instance of t_sp
+* This is an element within a list of surfaces
+* @param content points at an instance of t_surface
 */
-typedef t_list			t_list_sp;
-
-/**
-* This is an element within a list of planes
-* @param content points at an instance of t_pl
-*/
-typedef t_list			t_list_pl;
-
-/**
-* This is an element within a list of cylinders
-* @param content points at an instance of t_cy
-*/
-typedef t_list			t_list_cy;
+typedef t_list			t_list_surface;
 
 #endif
