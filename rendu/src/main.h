@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/09 21:55:48 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/01 10:23:39 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,14 @@
 * There will be only one instance of it created in the main function
 * The most important functions will reference it
 * ...
-* @param spheres points at the start of a linked list of spheres
-* @param planes points at the start of a linked list of planes
-* @param cylinders points at the start of a linked list of cylinders
+* @param surfaces points at the start of a linked list of spheres
 * If no sphere, plane or cylinder is present, the pointer is NULL
 */
 typedef struct s_context
 {
 	// Information needed by MiniLibX to create the window...
 	// Information about the camera, ambient light and the light spot
-	t_list_sp	*spheres;
-	t_list_pl	*planes;
-	t_list_cy	*cylinders;
+	t_list_surface	*surfaces;
 }					t_ctx;
 
 // Common functions
