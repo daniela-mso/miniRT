@@ -6,7 +6,7 @@
 #    By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/25 13:40:41 by marhuber          #+#    #+#              #
-#    Updated: 2026/11/01 11:06:33 by marhuber         ###   ########.fr        #
+#    Updated: 2026/11/21 22:36:46 by marhuber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MY_OBJECTS = $(MY_SOURCES:.c=.o)
 ## Rules to compile
 # Rule that gets called by default 
 $(NAME): $(MY_OBJECTS)
-	$(CC) $^ -o $(NAME)
+	$(CC) $^ -o $(NAME) -lm
 # An implicit rule creates the objects using CFLAGS
 
 all: $(NAME)

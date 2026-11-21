@@ -6,23 +6,57 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 10:18:20 by marhuber          #+#    #+#             */
-/*   Updated: 2026/10/09 21:34:05 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/21 22:35:30 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "../objects.h"
 
 void	putendl_err(char *s);
 
-int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result)
+float	scalar_product(t_vec *a, t_vec *b)
 {
-	result->x = point_b->x - point_a->x;
-	result->y = point_b->y - point_a->y;
-	result->z = point_b->z - point_a->z;
-	if (result->x == 0.f && result->y == 0.f && result->z == 0.f)
-	{
-		putendl_err("error direction_a2b");
-		return (1);
-	}
-	return (0);
+	return (a->x * b->x + a->y * b->y + a->z * b->z);
+}
+
+t_dir	*create_dir(t_vec *vector)
+{
+	t_dir	*res;
+	float	squared;
+	
+	squared = scalar_product(vector, vector);
+	if (squared == 0.f)
+		return (putendl_err("error create_dir zero vector"), NULL);
+	res = malloc(sizeof(*res));
+	if (!res)
+		return (perror("create_dir"), NULL);
+	res->x = vector->x / sqrtf(squared);
+	res->y = vector->y / sqrtf(squared);
+	res->z = vector->z / sqrtf(squared);
+	return (res);
+}
+
+t_vec	difference(t_vec *minuend, t_vec *substrahend)
+{
+	t_vec	res;
+
+	res.x = minuend->x - substrahend->x;
+	res.y = minuend->y - substrahend->y;
+	res.z = minuend->z - substrahend->z;
+	return (res);
+}
+
+t_dir	*direction_a2b(t_vec *point_a, t_vec *point_b)
+{
+	t_vec	vector;
+	t_dir	*res;
+
+	vector = difference(point_b, point_a);
+	res = create_dir(&vector);
+	if (!res)
+		putendl_err("error direction_a2b two points equal");
+	return (res);
 }
