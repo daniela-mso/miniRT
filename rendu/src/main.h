@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/01 10:23:39 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/21 20:24:34 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,21 @@ typedef struct s_context
 
 /**
 * This function computes the direction of segment between two points in space
+* @param vector points at a vector, it must not be te zero vector
+* Returns a freeable pointer to the direction corresponding to the vector
+* Return NULL if vector is the zero vector or if malloc fails
+*/
+t_dir	*create_dir(t_vec *vector);
+
+/**
+* This function computes the direction of segment between two points in space
 * @param point_a points at the starting point
 * @param point_b points at the destination point 
 * @param result points at a memory space where the resulting direction is saved
 * If both points are the same, the result is the zero vector & raises an error
 * Returns 0 if successful, 1 if both points are the same
 */
-int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
+int		direction_a2b(t_vec *point_a, t_vec *point_b, t_dir *result);
 
 /**
 * This function delivers the color seen by the camera in the direction given
@@ -51,6 +59,6 @@ int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
 * @param result points at a memory space where the resulting color is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result);
+int		color_seen(t_ctx *ctx, t_dir *direction, t_color *result);
 
 #endif // #ifndef MAIN_H

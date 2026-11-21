@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:22:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/01 10:22:11 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/21 20:22:42 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,48 +23,49 @@ typedef struct s_color
 }		t_color;
 // Question: int or char?
 
-struct s_vector
+typedef struct s_vector
 {
 	float	x;
 	float	y;
 	float	z;
-};
+}			t_vec;
 
-// Question: Using Two different types to reflect meaning?
-typedef struct s_vector	t_coord;
-typedef struct s_vector	t_direction;
-// Or one?
-typedef struct s_vector	t_vector;
-
-// Difference: A coordinate can be (0, 0, 0), which is the vector zero.
-// A vector zero as a coordinate represents the "center" or origin of the 
-// coordinates system.
-// A direction cannot be the vector zero.
+// A second struct with the same composition allows for a distinction between 
+//  different types of data that can be enforced by the compiler.
+// This type of structure should be used exclusively to save directions, e.g.
+//  vectors with length one (that is x^2+y^2+z^2=1).
+// This structure should thus be created using the appropriate fonction.
+typedef struct s_direction
+{
+	float	x;
+	float	y;
+	float	z;
+}			t_dir;
 
 // Surfaces
 
 typedef struct s_sphere
 {
-	t_coord	center;
 	float	radius;
+	t_vec	center;
 	t_color	color;
 }			t_sp;
 
 typedef struct s_plane
 {
-	t_coord		point;
-	t_vector	normal;
-	t_color		color;
-}				t_pl;
+	t_vec	point;
+	t_vec	normal;
+	t_color	color;
+}			t_pl;
 
 typedef struct s_cylinder
 {
-	t_coord		center;
-	t_vector	direction;
-	float		radius;
-	float		half_height;
-	t_color		color;
-}				t_cy;
+	float	radius;
+	float	half_height;
+	t_vec	center;
+	t_vec	direction;
+	t_color	color;
+}			t_cy;
 
 typedef enum e_surface_type
 {
