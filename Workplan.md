@@ -36,28 +36,14 @@ The program has to go through the following steps during execution:
 | What | Properties | Questions? |
 | - | - | - |
 | Vectors | All vectors in the program are three-dimensional | | 
-| | They can represent either **points in space** or **directions** | One type for both or two types with same structure?  |
+| | They can represent either **points in space** or **directed segments** | |
 | | Each of the three components of the vector is a `float`.
+| Directions | Directions are represented by vectors of length (or norm) equal to 1 |
 | Colors | Defined by three integer numbers in the range 0-255 (RGB) | struct with `char` or `int` ? |
 | Spheres | Defined by a center (vector / point in space), a diameter (float), a color | The input file contains the diameter, but it would be more useful to save directly the radius. Could this be done during parsing? |
 | Planes | Defined by any point on the plane (vector / point in space) and an orientation, given by the normal vector that is perpendicular to any line on the plane (vector / direction) a diameter (float), and a color | |
 | Cylinders | Defined by a center (vector / point in space), an orientation (vector / direction),  a diameter (float), a height (float) and a color | Diameter vs. radius as in the case of a sphere? |
 | Lists | A list for spheres, planes or cylinders are needed to represent the scene. ||
-
-## Functions
-
-Function of special importance for the programm to work coherently:
-
-- A function that given two points in space computes the direction of a ray going from the first to the second.
-
-- A function that given a direction and the context does the ray tracing and returns the color seen from the camera point when looking in that direction. 
-
-```C
-int	direction_a2b(t_coord *point_a, t_coord *point_b, t_direction *result);
-int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result);
-```
-
-
 
 # Ressources
 

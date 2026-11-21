@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 20:24:34 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/21 22:09:17 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,10 @@ t_dir	*create_dir(t_vec *vector);
 * This function computes the direction of segment between two points in space
 * @param point_a points at the starting point
 * @param point_b points at the destination point 
-* @param result points at a memory space where the resulting direction is saved
-* If both points are the same, the result is the zero vector & raises an error
-* Returns 0 if successful, 1 if both points are the same
+* Returns a freeable pointer to the direction
+* Return NULL if the two points are the same or if malloc fails
 */
-int		direction_a2b(t_vec *point_a, t_vec *point_b, t_dir *result);
+t_dir	*direction_a2b(t_vec *point_a, t_vec *point_b);
 
 /**
 * This function delivers the color seen by the camera in the direction given
