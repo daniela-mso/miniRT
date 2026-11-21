@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:22:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/01 10:22:11 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/14 16:59:31 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ struct s_vector
 
 // Question: Using Two different types to reflect meaning?
 typedef struct s_vector	t_coord;
-typedef struct s_vector	t_direction;
+typedef struct s_vector	t_dir;
 // Or one?
 typedef struct s_vector	t_vector;
 
@@ -78,7 +78,7 @@ typedef enum e_surface_type
 * @param data points at an instance of t_sp, t_pl or t_cy
 * @param type indicates which one of those it is
 */
-typedef struct s_surface_type
+typedef struct s_surface
 {
 	void			*data;
 	t_surface_type	type;

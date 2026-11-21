@@ -1,0 +1,67 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_seen.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/31 16:15:37 by marhuber          #+#    #+#             */
+/*   Updated: 2026/11/14 17:08:46 by marhuber         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../main.h"
+#include "tracing.h"
+
+int		intsect(t_coord *start, t_dir *direction, t_surface *surf, float *res);
+t_coord	move(t_coord *start, t_dir *direction, float coeff);
+
+int	first_point(t_ctx *ctx, t_dir *direction, t_point_seen *res)
+{
+	t_list_surface	*iterator;
+	t_surface		*surface;
+	float			coeff;
+	float			candidate;
+
+	coeff = -1.f;
+	iterator = ctx->surfaces;
+	while (iterator)
+	{
+		surface = iterator->content;
+		if (intsect(ctx->camera, direction, surface, &candidate) == 1)
+		{
+			if (coeff == -1.f || candidate < coeff)
+			{
+				coeff = candidate;
+				res->surface = surface;
+			}
+		}
+		iterator = iterator->next;
+	}
+	if (coeff > -1.f)
+	{
+		res->point = move(ctx->camera, direction, coeff);
+		return (1);
+	}
+	return (0);
+}
+
+// int	color_at_point(t_ctx *ctx, t_point_seen *point, t_vector *dir, t_color *res)
+// {
+// 	return (0);
+// }
+
+// int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result)
+// {
+// 	t_point_seen	point;
+
+// 	if (first_point(ctx, direction, &point))
+// 	{
+// 		color_at_point(ctx, &point, direction, result);
+// 	}
+// 	else
+// 	{
+// 		(void) ctx;// just ambient lighting  
+// 	}
+// 	return (0);
+// }
