@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:22:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 20:22:42 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/21 22:11:26 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_sphere
 typedef struct s_plane
 {
 	t_vec	point;
-	t_vec	normal;
+	t_dir	*normal;
 	t_color	color;
 }			t_pl;
 
@@ -63,7 +63,7 @@ typedef struct s_cylinder
 	float	radius;
 	float	half_height;
 	t_vec	center;
-	t_vec	direction;
+	t_dir	*direction;
 	t_color	color;
 }			t_cy;
 
