@@ -6,13 +6,14 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 13:44:27 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 22:39:38 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 21:02:24 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
+#include "objects.h"
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstclear(t_list **ptlst, void (*del)(void*));
@@ -21,6 +22,7 @@ void	del_surface(void *content);
 void	usage_example(t_ctx *ctx)
 {
 	t_sp			*a_sphere;
+	t_pl			*a_plane;
 	t_surface		*a_surface;
 	t_list_surface	*list_element;
 	t_vec			*point_a;
@@ -35,7 +37,6 @@ void	usage_example(t_ctx *ctx)
 	a_surface = malloc(sizeof(*a_surface));
 	a_surface->data = a_sphere;
 	a_surface->type = SP;
-	// ...
 	// Linking it as the first item of the list
 	list_element = ft_lstnew(a_surface);
 	ctx->surfaces = list_element;
@@ -63,6 +64,17 @@ void	usage_example(t_ctx *ctx)
 	first2second = direction_a2b(point_a, point_b);
 	// print result
 	printf("(%f, %f, %f)\n", first2second->x, first2second->y, first2second->z);
+	// create a plane
+	a_plane = malloc(sizeof(*a_plane));
+	a_plane->normal = create_dir(point_a);
+	a_plane->point.x = 0.f;
+	a_plane->point.y = 0.f;
+	a_plane->point.z = 0.f;
+	a_surface = malloc(sizeof(*a_surface));
+	a_surface->data = a_plane;
+	a_surface->type = PL;
+	list_element = ft_lstnew(a_surface);
+	ctx->surfaces->next->next = list_element; 
 	// clean up
 	ft_lstclear(&ctx->surfaces, &del_surface);
 	free(first2second);

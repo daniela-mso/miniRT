@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 10:18:20 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 22:35:30 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 20:51:48 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_dir	*create_dir(t_vec *vector)
 {
 	t_dir	*res;
 	float	squared;
-	
+
 	squared = scalar_product(vector, vector);
 	if (squared == 0.f)
 		return (putendl_err("error create_dir zero vector"), NULL);
