@@ -6,15 +6,16 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 15:35:22 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 18:27:01 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 22:24:36 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../objects.h"
 #include <math.h>
 
-t_vector	difference(t_vector *a, t_vector *b);
-float		scalar_product(t_vector *a, t_vector *b);
+t_vec	difference(t_vec *minuend, t_vec *substrahend);
+float	scalar_product(t_vec *a, t_vec *b);
+
 
 /** 
 * computes the solutions of the quadratic equation
@@ -58,16 +59,16 @@ int	solve_quadratic_eq(float a, float b, float c, float res[2])
 *  start + res[1] * direction = a point that is part of the sphere
 * returns 0 if there are no intersections
 */
-int	intsect_sp(t_coord *start, t_dir *direction, t_sp *sph, float res[2])
+int	intsect_sp(t_vec *start, t_dir *direction, t_sp *sph, float res[2])
 {
-	t_vector	sta2cen;
+	t_vec	sta2cen;
 	float		a;
 	float		b;
 	float		c;
 
 	sta2cen = difference(start, &sph->center);
-	a = scalar_product(direction, direction);
-	b = 2.0f * scalar_product(&sta2cen, direction);
+	a = 1.0f;
+	b = 2.0f * scalar_product(&sta2cen, (t_vec *)direction);
 	c = scalar_product(&sta2cen, &sta2cen) - sph->radius * sph->radius;
 	return (solve_quadratic_eq(a, b, c, res));
 }
@@ -83,15 +84,15 @@ int	intsect_sp(t_coord *start, t_dir *direction, t_sp *sph, float res[2])
 * returns 0 if there are no intersections
 * returns 3 if the entire ray is part of the plane
 */
-int	intsect_pl(t_coord *start, t_dir *direction, t_pl *plane, float res[1])
+int	intsect_pl(t_vec *start, t_dir *direction, t_pl *plane, float res[1])
 {
-	t_vector	start2point;
+	t_vec	start2point;
 	float		a;
 	float		b;
 
 	start2point = difference(start, &plane->point);
-	a = scalar_product(direction, &plane->normal);
-	b = scalar_product(&start2point, &plane->normal);
+	a = scalar_product((t_vec *)direction, (t_vec *)&plane->normal);
+	b = scalar_product(&start2point, (t_vec *)&plane->normal);
 	if (a == 0.f)
 	{
 		if (b == 0.f)
@@ -116,7 +117,7 @@ int	intsect_pl(t_coord *start, t_dir *direction, t_pl *plane, float res[1])
 * returns 0 if there are no intersections
 * returns 3 if a segment of the ray is part of the clynder
 */
-int	intsect_cy(t_coord *start, t_dir *direction, t_cy *cylinder, float res[2])
+int	intsect_cy(t_vec *start, t_dir *direction, t_cy *cylinder, float res[2])
 {
 	(void) start;
 	(void) direction;
@@ -138,7 +139,7 @@ int	intsect_cy(t_coord *start, t_dir *direction, t_cy *cylinder, float res[2])
 * returns 0 if there are no such intersections
 * returns 3 if a segment of the ray is part of the surface
 */
-int	intsect(t_coord *start, t_dir *direction, t_surface *surf, float *res)
+int	intsect(t_vec *start, t_dir *direction, t_surface *surf, float *res)
 {
 	int		n;
 	float	cand[2];

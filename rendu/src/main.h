@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/14 16:59:31 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 22:25:12 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_context
 {
 	// Information needed by MiniLibX to create the window...
 	// Information about the camera, ambient light and the light spot
-	t_coord			*camera;
+	t_vec			*camera;
 	t_list_surface	*surfaces;
 }					t_ctx;
 
@@ -35,13 +35,20 @@ typedef struct s_context
 
 /**
 * This function computes the direction of segment between two points in space
+* @param vector points at a vector, it must not be te zero vector
+* @param res points at a memory space where the resulting direction is saved
+* Returns 0 if successful, 1 if the vector is the zero vector
+*/
+int	create_dir(t_vec *vector, t_dir *res);
+
+/**
+* This function computes the direction of segment between two points in space
 * @param point_a points at the starting point
 * @param point_b points at the destination point 
-* @param result points at a memory space where the resulting direction is saved
-* If both points are the same, the result is the zero vector & raises an error
+* @param res points at a memory space where the resulting direction is saved
 * Returns 0 if successful, 1 if both points are the same
 */
-int	direction_a2b(t_coord *point_a, t_coord *point_b, t_dir *result);
+int	direction_a2b(t_vec *point_a, t_vec *point_b, t_dir *res);
 
 /**
 * This function delivers the color seen by the camera in the direction given
@@ -52,6 +59,6 @@ int	direction_a2b(t_coord *point_a, t_coord *point_b, t_dir *result);
 * @param result points at a memory space where the resulting color is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int	color_seen(t_ctx *ctx, t_dir *direction, t_color *result);
+int		color_seen(t_ctx *ctx, t_dir *direction, t_color *result);
 
 #endif // #ifndef MAIN_H

@@ -6,15 +6,15 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 16:15:37 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/14 17:08:46 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 22:28:27 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 #include "tracing.h"
 
-int		intsect(t_coord *start, t_dir *direction, t_surface *surf, float *res);
-t_coord	move(t_coord *start, t_dir *direction, float coeff);
+int		intsect(t_vec *start, t_dir *direction, t_surface *surf, float *res);
+t_vec	move(t_vec *start, t_dir *direction, float coeff);
 
 int	first_point(t_ctx *ctx, t_dir *direction, t_point_seen *res)
 {
