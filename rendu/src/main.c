@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/25 13:44:27 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 21:02:24 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 21:23:35 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,13 @@ void	usage_example(t_ctx *ctx)
 	a_sphere = a_surface->data;
 	point_b = &a_sphere->center;
 	// malloc space for the result;
-	first2second = direction_a2b(point_a, point_b);
+	first2second = malloc(sizeof(*first2second));
+	direction_a2b(point_a, point_b, first2second);
 	// print result
 	printf("(%f, %f, %f)\n", first2second->x, first2second->y, first2second->z);
 	// create a plane
 	a_plane = malloc(sizeof(*a_plane));
-	a_plane->normal = create_dir(point_a);
+	create_dir(point_a, &a_plane->normal);
 	a_plane->point.x = 0.f;
 	a_plane->point.y = 0.f;
 	a_plane->point.z = 0.f;

@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 21:15:21 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 21:27:38 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	create_dir(t_vec *vector, t_dir *res);
 * @param res points at a memory space where the resulting direction is saved
 * Returns 0 if successful, 1 if both points are the same
 */
-int	direction_a2b(t_vec *point_a, t_vec *, t_dir *res);
+int	direction_a2b(t_vec *point_a, t_vec *point_b, t_dir *res);
 
 /**
 * This function delivers the color seen by the camera in the direction given
