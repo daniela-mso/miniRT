@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/21 22:09:17 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 21:15:21 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ typedef struct s_context
 /**
 * This function computes the direction of segment between two points in space
 * @param vector points at a vector, it must not be te zero vector
-* Returns a freeable pointer to the direction corresponding to the vector
-* Return NULL if vector is the zero vector or if malloc fails
+* @param res points at a memory space where the resulting direction is saved
+* Returns 0 if successful, 1 if the vector is the zero vector
 */
-t_dir	*create_dir(t_vec *vector);
+int	create_dir(t_vec *vector, t_dir *res);
 
 /**
 * This function computes the direction of segment between two points in space
 * @param point_a points at the starting point
 * @param point_b points at the destination point 
-* Returns a freeable pointer to the direction
-* Return NULL if the two points are the same or if malloc fails
+* @param res points at a memory space where the resulting direction is saved
+* Returns 0 if successful, 1 if both points are the same
 */
-t_dir	*direction_a2b(t_vec *point_a, t_vec *point_b);
+int	direction_a2b(t_vec *point_a, t_vec *, t_dir *res);
 
 /**
 * This function delivers the color seen by the camera in the direction given
