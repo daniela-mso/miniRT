@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 23:02:22 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/27 20:12:45 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_context
 {
 	// Information needed by MiniLibX to create the window...
 	// Information about the camera, ambient light and the light spot
-	t_vec			*camera;
+	t_vec			camera;
 	t_list_surface	*surfaces;
 }					t_ctx;
 

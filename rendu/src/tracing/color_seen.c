@@ -28,7 +28,7 @@ int	first_point(t_ctx *ctx, t_dir *direction, t_point_seen *res)
 	while (iterator)
 	{
 		surface = iterator->content;
-		if (intsect(ctx->camera, direction, surface, &candidate) == 1)
+		if (intsect(&ctx->camera, direction, surface, &candidate) == 1)
 		{
 			if (coeff == -1.f || candidate < coeff)
 			{
@@ -40,7 +40,7 @@ int	first_point(t_ctx *ctx, t_dir *direction, t_point_seen *res)
 	}
 	if (coeff > -1.f)
 	{
-		res->point = move(ctx->camera, direction, coeff);
+		res->point = move(&ctx->camera, direction, coeff);
 		return (1);
 	}
 	return (0);
