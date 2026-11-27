@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/31 16:15:37 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 22:28:27 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/27 20:23:39 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,33 @@ int	first_point(t_ctx *ctx, t_dir *direction, t_point_seen *res)
 	return (0);
 }
 
-// int	color_at_point(t_ctx *ctx, t_point_seen *point, t_vector *dir, t_color *res)
-// {
-// 	return (0);
-// }
+int	color_at_point(t_ctx *ctx, t_point_seen *point, t_dir *dir, t_color *res)
+{
+	t_surface	*surf;
 
-// int	color_seen(t_ctx *ctx, t_direction *direction, t_color *result)
-// {
-// 	t_point_seen	point;
+	(void) ctx;
+	(void) dir;
+	surf = point->surface;
+	if (surf->type == SP)
+		*res = ((t_sp *)(surf->data))->color;
+	else if (surf->type == PL)
+		*res = ((t_pl *)(surf->data))->color;
+	else if (surf->type == CY)
+		*res = ((t_cy *)(surf->data))->color;
+	return (0);
+}
 
-// 	if (first_point(ctx, direction, &point))
-// 	{
-// 		color_at_point(ctx, &point, direction, result);
-// 	}
-// 	else
-// 	{
-// 		(void) ctx;// just ambient lighting  
-// 	}
-// 	return (0);
-// }
+int	color_seen(t_ctx *ctx, t_dir *direction, t_color *result)
+{
+	t_point_seen	point;
+
+	if (first_point(ctx, direction, &point))
+	{
+		color_at_point(ctx, &point, direction, result);
+	}
+	else
+	{
+		(void) ctx;// just ambient lighting  
+	}
+	return (0);
+}
