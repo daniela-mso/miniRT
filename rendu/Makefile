@@ -6,7 +6,7 @@
 #    By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/09/25 13:40:41 by marhuber          #+#    #+#              #
-#    Updated: 2026/11/23 22:17:34 by marhuber         ###   ########.fr        #
+#    Updated: 2026/11/27 19:53:38 by marhuber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ MY_SOURCES = \
 	src/main.c \
 	src/clean.c \
 	src/tracing/color_seen.c \
-	src/geometry/direction.c src/geometry/intersections.c \
+	src/geometry/direction.c \
+	src/geometry/intersections.c src/geometry/intersections_cy.c \
 	src/utils/utils.c \
 	src/utils/lists1.c src/utils/lists2.c \
 	src/utils/get_next_line.c

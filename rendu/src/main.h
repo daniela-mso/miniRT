@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/02 19:47:05 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 22:25:12 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/23 23:02:22 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	direction_a2b(t_vec *point_a, t_vec *point_b, t_dir *res);
 * @param result points at a memory space where the resulting color is saved
 * Returns 0 if successful, 1 if an error occurs
 */
-int		color_seen(t_ctx *ctx, t_dir *direction, t_color *result);
+int	color_seen(t_ctx *ctx, t_dir *direction, t_color *result);
 
 #endif // #ifndef MAIN_H

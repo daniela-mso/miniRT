@@ -6,7 +6,7 @@
 /*   By: marhuber <marhuber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/09 10:18:20 by marhuber          #+#    #+#             */
-/*   Updated: 2026/11/23 22:26:15 by marhuber         ###   ########.fr       */
+/*   Updated: 2026/11/24 20:09:35 by marhuber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	putendl_err(char *s);
 
-float	scalar_product(t_vec *a, t_vec *b)
+float	scalar_pr(t_vec *a, t_vec *b)
 {
 	return (a->x * b->x + a->y * b->y + a->z * b->z);
 }
@@ -24,7 +24,7 @@ int	create_dir(t_vec *vector, t_dir *res)
 {
 	float	squared;
 
-	squared = scalar_product(vector, vector);
+	squared = scalar_pr(vector, vector);
 	if (squared == 0.f)
 		return (putendl_err("error create_dir zero vector"), 1);
 	res->x = vector->x / sqrtf(squared);
